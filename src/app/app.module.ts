@@ -23,7 +23,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     BrowserModule,
     AppRoutingModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyC2DYCevqVMS4gaVhigniVcUdC1wntPUhM'
+      apiKey: ''
     })
   ],
   providers: [],
