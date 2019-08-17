@@ -1,6 +1,6 @@
 <div id="main-container">
     <div id="map">
-        <app-map></app-map>
+        <app-map *ngIf="coordinates" [coords]="coordinates"></app-map>
     </div>
     <div id="search-bar">
         <app-search-bar></app-search-bar>

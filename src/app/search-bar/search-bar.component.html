@@ -1,1 +1,7 @@
-<p>search-bar works!</p>
+<div id="container">
+    <label for="zipCode">Zip Code:</label>
+    <input type="text" class="form-control" id="zipCode" 
+        required
+        [(ngModel)]="zipCode">
+    <button (click)='onSubmit()' type="submit" class="btn btn-success">Go to zip code</button>
+</div>
