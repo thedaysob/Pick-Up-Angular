@@ -1,7 +1,20 @@
 <div id="container">
-    <label for="zipCode">Zip Code:</label>
-    <input type="text" class="form-control" id="zipCode" 
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" 
         required
-        [(ngModel)]="zipCode">
-    <button (click)='onSubmit()' type="submit" class="btn btn-success">Go to zip code</button>
+        [(ngModel)]="currName" name="name">
+    
+    <label for="numOfPlayers">Number of Players</label>        
+    <input type="text" class="form-control" id="numOfPlayers" 
+        required
+        [(ngModel)]="currNumOfPlayers">
+
+    <label for="sports">Sport</label><br>  
+    <select class="form-control" id="sports" 
+        required
+        [(ngModel)]="currSport" name="sport">
+        <option *ngFor="let sport of sports" [value]="sport">{{sport}}</option>
+    </select>
+    <br>
+    <button *ngIf="markerPlaced" (click)='onSubmit()' type="submit" class="btn btn-success">Submit</button>
 </div>

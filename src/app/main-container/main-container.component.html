@@ -1,8 +1,16 @@
 <div id="main-container">
     <div id="map">
-        <app-map *ngIf="coordinates" [coords]="coordinates"></app-map>
+        <app-map 
+            *ngIf="coordinates" 
+            [coords]="coordinates" 
+            [pickUpInfo]="pickUpInfo"
+            (markerPlaced)="onMarkerPlaced($event)">
+        </app-map>
     </div>
     <div id="search-bar">
-        <app-search-bar></app-search-bar>
+        <app-search-bar
+            [markerPlaced]='markerPlaced'
+            (newInfo)='onNewInfo($event)'>
+        </app-search-bar>
     </div>
 </div>

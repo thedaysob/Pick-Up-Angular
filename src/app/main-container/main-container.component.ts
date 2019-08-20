@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { GeoLocationService } from '../service/geo-location.service'
+import { PickUpInfo } from '../model/pick-up-info'
 
 @Component({
   selector: 'app-main-container',
@@ -8,6 +9,8 @@ import { GeoLocationService } from '../service/geo-location.service'
 })
 export class MainContainerComponent implements OnInit {
   coordinates: any;
+  pickUpInfo : PickUpInfo;
+  markerPlaced : boolean = true;
 
   constructor(public geoLocationService: GeoLocationService) { }
 
@@ -18,7 +21,16 @@ export class MainContainerComponent implements OnInit {
           latitude: pos.coords.latitude,
           longitude: pos.coords.longitude
         };
-        console.log(this.coordinates);
       });
+  }
+
+  onNewInfo($event : PickUpInfo) {
+    console.log("submitted");
+    this.markerPlaced = false;
+    this.pickUpInfo = $event;
+  }
+
+  onMarkerPlaced($event : boolean) {
+    this.markerPlaced = true;
   }
 }

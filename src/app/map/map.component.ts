@@ -1,4 +1,6 @@
-import { Component, OnInit, OnChanges, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
+import { Marker } from '../model/marker';
+import { PickUpInfo } from '../model/pick-up-info'
 
 @Component({
   selector: 'app-map',
@@ -7,6 +9,10 @@ import { Component, OnInit, OnChanges, Input } from '@angular/core';
 })
 export class MapComponent implements OnInit, OnChanges {
   @Input() coords : any;
+  @Input() pickUpInfo : PickUpInfo;
+  @Output() markerPlaced = new EventEmitter<boolean>();
+  
+  markers: Array<Marker> = [];
 
   constructor() { 
   }
@@ -19,6 +25,19 @@ export class MapComponent implements OnInit, OnChanges {
       this.coords.latitude = 0;
       this.coords.longitude = 0;
     }
+  }
+
+  mapDblClicked($event: MouseEvent) {
+    let currMark = new Marker;
+    currMark.lat = $event.coords.lat;
+    currMark.lng = $event.coords.lng;
+    currMark.pickUpInfo = this.pickUpInfo;
+    this.markers.push(currMark);
+    this.markerPlaced.emit(true);
+  }
+
+  clickedMarker(index: number) {
+    console.log(this.markers[index]);
   }
 
 }
