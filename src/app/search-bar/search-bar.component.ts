@@ -2,6 +2,7 @@ import { Component, OnInit, Output, NgZone, EventEmitter, Input } from '@angular
 import { MapsAPILoader } from '@agm/core';
 import { GoogleMapsAPIWrapper } from '@agm/core/services';
 import { PickUpInfo } from '../model/pick-up-info'
+import { AuthService } from '../service/auth.service'
 
 @Component({
   selector: 'app-search-bar',
@@ -18,8 +19,10 @@ export class SearchBarComponent implements OnInit {
   @Input() markerPlaced : boolean;
   
   constructor(
+    public auth: AuthService
   ) {
-    this.sports.push('Basketball', 'Soccer', 'Ultimate Frisbee');    
+    this.sports.push('Basketball', 'Soccer', 'Ultimate Frisbee');
+
   }
 
   ngOnInit() {

@@ -28,6 +28,7 @@ export class MapComponent implements OnInit, OnChanges {
   }
 
   mapDblClicked($event: MouseEvent) {
+    console.log($event);
     let currMark = new Marker;
     currMark.lat = $event.coords.lat;
     currMark.lng = $event.coords.lng;
