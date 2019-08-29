@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { GeoLocationService } from '../service/geo-location.service'
-import { PickUpInfo } from '../model/pick-up-info'
+import { GeoLocationService } from '../../service/geo-location.service'
+import { PickUpInfo } from '../../model/pick-up-info'
 
 @Component({
   selector: 'app-main-container',

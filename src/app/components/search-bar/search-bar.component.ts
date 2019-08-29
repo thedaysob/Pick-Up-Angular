@@ -1,8 +1,8 @@
 import { Component, OnInit, Output, NgZone, EventEmitter, Input } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
 import { GoogleMapsAPIWrapper } from '@agm/core/services';
-import { PickUpInfo } from '../model/pick-up-info'
-import { AuthService } from '../service/auth.service'
+import { PickUpInfo } from '../../model/pick-up-info'
+import { AuthService } from '../../service/auth.service'
 
 @Component({
   selector: 'app-search-bar',

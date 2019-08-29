@@ -1,0 +1,11 @@
+#container {
+    height : 100%;
+    width : 100%;
+    grid-template-columns: 45% 10% 45%;
+    grid-template-rows: 45% 10% 45%;
+
+    #loginContainer {
+        grid-column: 2/3;
+        grid-row: 2/3;
+    }
+}

@@ -4,14 +4,16 @@ import { FormsModule }   from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { MainContainerComponent } from './main-container/main-container.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { MapComponent } from './map/map.component';
-import { SearchBarComponent } from './search-bar/search-bar.component';
+import { MainContainerComponent } from './container/main-container/main-container.component';
+import { PageNotFoundComponent } from './container/page-not-found/page-not-found.component';
+import { LoginComponent } from './container/login/login.component';
+import { MapComponent } from './components/map/map.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 import { environment } from '../environments/environment';
 
@@ -22,6 +24,7 @@ import { environment } from '../environments/environment';
     PageNotFoundComponent,
     MapComponent,
     SearchBarComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import { environment } from '../environments/environment';
       apiKey: 'AIzaSyC2DYCevqVMS4gaVhigniVcUdC1wntPUhM'
     }),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

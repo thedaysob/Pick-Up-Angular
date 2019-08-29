@@ -10,13 +10,15 @@
         <agm-marker
             *ngFor="let m of markers; let i = index"
             (markerClick)="clickedMarker(i)"
-            [latitude]="m.lat"
-            [longitude]="m.lng">
+            [latitude]="m.coords.lat"
+            [longitude]="m.coords.lng">
 
             <agm-info-window>
                 <strong>Organizer's Name</strong> : {{m.pickUpInfo.registerName}} <br>
                 <strong>Sport</strong> : {{m.pickUpInfo.typeOfSport}} <br>
                 <strong>Number of Players</strong> : {{m.pickUpInfo.numOfPlayers}} <br>
+                <button (click)="joinGame(m)">Join</button> 
+                <button (click)="leaveGame(m)">Leave</button>     
             </agm-info-window>
 
         </agm-marker>
