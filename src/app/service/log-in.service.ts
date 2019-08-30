@@ -13,12 +13,13 @@ export class LogInService {
 
   createNewUser(user : User): Observable<any> {
     return this.http.post<String> ('http://localhost:3000/Users/', user);
-    
   }
 
   getUser(username : string, password : string): Observable<User> {
     let params = new HttpParams();
+    params = params.append('username', username);
     params = params.append('password', password);
-    return this.http.get<User>('http://localhost:3000/Users/' + username);
+    console.log(username);
+    return this.http.get<User>('http://localhost:3000/Users/', { params : params });
   }
 }

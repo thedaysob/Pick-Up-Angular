@@ -12,13 +12,15 @@ export class LoginComponent implements OnInit {
 
   username : string;
   password : string;
-  newUser : boolean;
 
   newUsername : string;
   newPassword : string;
   confirmPassword : string;
   age : number;
   email : string;
+
+  newUser : boolean;
+
 
   constructor(private logInService : LogInService) { }
 
@@ -29,6 +31,11 @@ export class LoginComponent implements OnInit {
   login() {
     console.log(this.username);
     console.log(this.password);
+    this.logInService.getUser(this.username, this.password).subscribe((response)=> {
+      console.log(response);
+    }, (err)=>{
+      console.log(err);
+    });
   }
 
   createNewUserWindow() {
