@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { LogInService } from '../../service/log-in.service';
-import { User } from '../../model/user';
+import { User, UserInfo } from '../../model/user';
 import { UUID } from 'angular2-uuid';
+import { Router } from "@angular/router";
+
 
 @Component({
   selector: 'app-login',
@@ -9,7 +11,6 @@ import { UUID } from 'angular2-uuid';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
   username : string;
   password : string;
 
@@ -21,18 +22,28 @@ export class LoginComponent implements OnInit {
 
   newUser : boolean;
 
+  message : string;
+  errorMessage : string;
 
-  constructor(private logInService : LogInService) { }
+  userInfo : UserInfo;
+
+  constructor(private logInService : LogInService, private router: Router) 
+  { }
 
   ngOnInit() {
     this.newUser = false;
   }
 
   login() {
-    console.log(this.username);
-    console.log(this.password);
     this.logInService.getUser(this.username, this.password).subscribe((response)=> {
-      console.log(response);
+      if (!response.status) {
+        this.userInfo = response;
+        console.log(this.userInfo);
+        this.router.navigate(['main-container']);
+      } else {
+        console.log("username and password");
+        this.message = "Username and password did not match.";
+      }
     }, (err)=>{
       console.log(err);
     });
@@ -52,7 +63,8 @@ export class LoginComponent implements OnInit {
         console.log(error);
       });
     } else {
-
+      this.errorMessage = "Password does not match Confirm Password";
     }
+    this.newUser = false;
   }
 }

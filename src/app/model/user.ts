@@ -1,11 +1,11 @@
-class UserInfo {
-    uniqueID: string;
+export class UserInfo { 
+    userID: string;
     age: number;
     email: string;
     games: Array<string>;
 
     constructor(uuid: string, age: number, email: string) {
-        this.uniqueID = uuid;
+        this.userID = uuid;
         this.age = age;
         this.email = email;
     }

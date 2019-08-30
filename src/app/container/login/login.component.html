@@ -10,6 +10,7 @@
                 required
                 [(ngModel)]="password">
         <br>
+        <h2>{{message}}</h2>
         <button (click)='login()' type="submit" class="btn btn-success">Log In</button>
         <button (click)='createNewUserWindow()' type="submit" class="btn btn-success">Create Log In</button>
     </div>   
@@ -46,7 +47,7 @@
             </div>
             <br>
 
-            <label for="age">Age</label>        
+            <label for="age">Age</label><br>    
             <input type="text" class="form-control" id="age" 
                 required
                 [(ngModel)]="age" name="age" #ageCheck="ngModel">
@@ -56,7 +57,7 @@
             </div>
             <br>
 
-            <label for="email">Email</label>        
+            <label for="email">Email</label><br>     
             <input type="text" class="form-control" id="email" 
                 required
                 [(ngModel)]="email" name="email" #emailCheck="ngModel">
@@ -65,6 +66,7 @@
                 Email is required
             </div>
             <br>
+            <p>{{errorMessage}}</p>
             <button type="submit" class="btn btn-success" [disabled]="!userForm.form.valid">Create</button>
         </form>       
     </div>
