@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpParams } from '@angular/common/http'
 
 import { User } from '../model/user'
 
@@ -17,6 +17,8 @@ export class LogInService {
   }
 
   getUser(username : string, password : string): Observable<User> {
+    let params = new HttpParams();
+    params = params.append('password', password);
     return this.http.get<User>('http://localhost:3000/Users/' + username);
   }
 }

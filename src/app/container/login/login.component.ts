@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LogInService } from '../../service/log-in.service';
 import { User } from '../../model/user';
+import { UUID } from 'angular2-uuid';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
   age : number;
   email : string;
 
-  constructor() { }
+  constructor(private logInService : LogInService) { }
 
   ngOnInit() {
     this.newUser = false;
@@ -30,7 +31,21 @@ export class LoginComponent implements OnInit {
     console.log(this.password);
   }
 
-  createNewUser() {
+  createNewUserWindow() {
     this.newUser = true;
+  }
+
+  createNewUser() {
+    if (this.newPassword == this.confirmPassword) {
+      let uuid = UUID.UUID();
+      let currUser = new User(this.newUsername, this.newPassword, uuid, this.age, this.email);
+      this.logInService.createNewUser(currUser).subscribe((response)=>{
+        console.log(response);
+      }, (error)=>{
+        console.log(error);
+      });
+    } else {
+
+    }
   }
 }

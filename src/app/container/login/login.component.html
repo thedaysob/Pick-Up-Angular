@@ -11,34 +11,61 @@
                 [(ngModel)]="password">
         <br>
         <button (click)='login()' type="submit" class="btn btn-success">Log In</button>
-        <button (click)='createNewUser()' type="submit" class="btn btn-success">Create Log In</button>
+        <button (click)='createNewUserWindow()' type="submit" class="btn btn-success">Create Log In</button>
     </div>   
     <div *ngIf="newUser" id="newUserContainer" class="center">
-        <label for="newUsername">New Username</label>
-        <input type="text" class="form-control" id="newUsername" 
-            required
-            [(ngModel)]="newUsername" name="newUsername">
-        <br>
-        <label for="newPassword">New Password</label>        
-        <input type="text" class="form-control" id="newPassword" 
-            required
-            [(ngModel)]="newPassword">
-        <br>
-        <label for="confirmPassword">Confirm Password</label>        
-        <input type="text" class="form-control" id="confirmPassword" 
-            required
-            [(ngModel)]="confirmPassword">
-        <br>
-        <label for="age">Age</label>        
-        <input type="text" class="form-control" id="age" 
-            required
-            [(ngModel)]="age">
-        <br>
-        <label for="email">Email</label>        
-        <input type="text" class="form-control" id="email" 
-            required
-            [(ngModel)]="email">
-        <br>
-        <button (click)='createNewUser()' type="submit" class="btn btn-success">Create</button>        
+        <form (ngSubmit)="createNewUser()" #userForm="ngForm">            
+            <label for="newUsername">New Username</label>
+            <input type="text" class="form-control" id="newUsername" 
+                required
+                [(ngModel)]="newUsername" name="newUsername" #newUsernameCheck="ngModel">
+
+            <div [hidden]="newUsernameCheck.valid || newUsernameCheck.pristine"
+                class="alert alert-danger">
+                Name is required
+            </div>
+            <br>
+
+            <label for="newPassword">New Password</label>        
+            <input type="text" class="form-control" id="newPassword" 
+                required
+                [(ngModel)]="newPassword" name="newPassword" #newPasswordCheck="ngModel">
+            <div [hidden]="newPasswordCheck.valid || newPasswordCheck.pristine"
+                class="alert alert-danger">
+                Password is required
+            </div>
+            <br>
+
+            <label for="confirmPassword">Confirm Password</label>        
+            <input type="text" class="form-control" id="confirmPassword" 
+                required
+                [(ngModel)]="confirmPassword" name="confirmPassword" #confirmPasswordCheck="ngModel">
+            <div [hidden]="confirmPasswordCheck.valid || confirmPasswordCheck.pristine"
+                class="alert alert-danger">
+                Confirmation password is required
+            </div>
+            <br>
+
+            <label for="age">Age</label>        
+            <input type="text" class="form-control" id="age" 
+                required
+                [(ngModel)]="age" name="age" #ageCheck="ngModel">
+            <div [hidden]="ageCheck.valid || ageCheck.pristine"
+                class="alert alert-danger">
+                Age is required
+            </div>
+            <br>
+
+            <label for="email">Email</label>        
+            <input type="text" class="form-control" id="email" 
+                required
+                [(ngModel)]="email" name="email" #emailCheck="ngModel">
+            <div [hidden]="emailCheck.valid || emailCheck.pristine"
+                class="alert alert-danger">
+                Email is required
+            </div>
+            <br>
+            <button type="submit" class="btn btn-success" [disabled]="!userForm.form.valid">Create</button>
+        </form>       
     </div>
 </div>
